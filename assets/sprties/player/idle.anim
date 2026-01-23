@@ -1,0 +1,143 @@
+[
+  {
+    "__type__": "cc.AnimationClip",
+    "_name": "idle",
+    "_objFlags": 0,
+    "__editorExtras__": {
+      "embeddedPlayerGroups": [
+        {
+          "key": "1769014015526",
+          "name": "animation-clip",
+          "type": "animation-clip"
+        }
+      ]
+    },
+    "_native": "",
+    "sample": 10,
+    "speed": 3.5,
+    "wrapMode": 2,
+    "enableTrsBlending": false,
+    "_duration": 5.1,
+    "_hash": 500763545,
+    "_tracks": [
+      {
+        "__id__": 1
+      }
+    ],
+    "_exoticAnimation": null,
+    "_events": [
+      {
+        "frame": 0,
+        "func": "",
+        "params": []
+      },
+      {
+        "frame": 0,
+        "func": "34325",
+        "params": [
+          "param"
+        ]
+      }
+    ],
+    "_embeddedPlayers": [
+      {
+        "__id__": 6
+      }
+    ],
+    "_additiveSettings": {
+      "__id__": 8
+    },
+    "_auxiliaryCurveEntries": []
+  },
+  {
+    "__type__": "cc.animation.ObjectTrack",
+    "_binding": {
+      "__type__": "cc.animation.TrackBinding",
+      "path": {
+        "__id__": 2
+      },
+      "proxy": null
+    },
+    "_channel": {
+      "__id__": 4
+    }
+  },
+  {
+    "__type__": "cc.animation.TrackPath",
+    "_paths": [
+      {
+        "__id__": 3
+      },
+      "spriteFrame"
+    ]
+  },
+  {
+    "__type__": "cc.animation.ComponentPath",
+    "component": "cc.Sprite"
+  },
+  {
+    "__type__": "cc.animation.Channel",
+    "_curve": {
+      "__id__": 5
+    }
+  },
+  {
+    "__type__": "cc.ObjectCurve",
+    "_times": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "_values": [
+      {
+        "__uuid__": "c8582d45-47cc-4d03-8109-dd32783bc18e@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "c8582d45-47cc-4d03-8109-dd32783bc18e@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "ca5f74cd-9e84-439d-b782-4018b1b13c57@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "ac11d380-7bc5-4bcb-b0e5-e6407569765e@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "7931d725-d34c-4c33-89e4-6d60ffa05f32@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "c8582d45-47cc-4d03-8109-dd32783bc18e@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      }
+    ]
+  },
+  {
+    "__type__": "cc.animation.EmbeddedPlayer",
+    "__editorExtras__": {
+      "group": "1769014015526"
+    },
+    "begin": 0,
+    "end": 0.08333333333333333,
+    "reconciledSpeed": false,
+    "playable": {
+      "__id__": 7
+    }
+  },
+  {
+    "__type__": "cc.animation.EmbeddedAnimationClipPlayable",
+    "path": "",
+    "clip": null
+  },
+  {
+    "__type__": "cc.AnimationClipAdditiveSettings",
+    "enabled": false,
+    "refClip": null
+  }
+]
