@@ -8,10 +8,10 @@
     },
     "_native": "",
     "sample": 10,
-    "speed": 5,
+    "speed": 4,
     "wrapMode": 1,
     "enableTrsBlending": false,
-    "_duration": 5.1,
+    "_duration": 10.1,
     "_hash": 500763545,
     "_tracks": [
       {
@@ -66,11 +66,36 @@
       2,
       3,
       4,
-      5
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
     ],
     "_values": [
       {
         "__uuid__": "924d0d8f-cb75-4f56-8c5a-1f1e71c8d4aa@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "d7f1480c-6c9c-4236-8708-eaa155aa274a@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "d7f1480c-6c9c-4236-8708-eaa155aa274a@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "d7f1480c-6c9c-4236-8708-eaa155aa274a@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "d7f1480c-6c9c-4236-8708-eaa155aa274a@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "d7f1480c-6c9c-4236-8708-eaa155aa274a@f9941",
         "__expectedType__": "cc.SpriteFrame"
       },
       {
