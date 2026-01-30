@@ -121,7 +121,7 @@ export class Player extends Component {
 
     // Обработчик прыжка
     private onJump(event: EventTouch) {
-        if (!this.isJumping) {
+        if (!this.isJumping && !this.gameManager.IsPaused) {
             this.isJumping = true;
             this.isFalling = false; // Убираем падение, когда начинается новый прыжок
             this.jumpStartY = this.node.position.y;

@@ -193,7 +193,14 @@ export class GameManager extends Component {
             this.IsPaused = true;
             this.IsEnd = true;
             this.loseScreenNode.active = true;
+            this.hearts.getChildByName(`heart ${2}`).getComponent(Sprite).grayscale = true;
 
+        }
+        if (this.healthPoints == 2) {
+            this.hearts.getChildByName(`heart ${0}`).getComponent(Sprite).grayscale = true;
+        }
+        if (this.healthPoints == 1) {
+            this.hearts.getChildByName(`heart ${1}`).getComponent(Sprite).grayscale = true;
         }
     }
 
@@ -202,16 +209,11 @@ export class GameManager extends Component {
     onPlayerCollideWithObstacle() {
         for (let i = 0; i < 9.; i++) {
             const obstacle = this.obstacles.getChildByName(`obstacle ${i}`);
-        
-        if (this.isCollision(this.playerNode, obstacle) && !this.player.isAnimationPlaying('damage')) {
-            this.player.playerAnimation.play('damage') 
-            console.log("colided with obstacle")
-            if (!this.player.isAnimationPlaying('damage'))
-                for (let k = 0; k < 3; k++) {
-                    const heart = this.hearts.getChildByName(`heart ${k}`).getComponent(UIOpacity);
-                    heart.opacity = 30;
-                }
-                this.healthPoints -= 1;
+                if (this.isCollision(this.playerNode, obstacle) && !this.player.isAnimationPlaying('damage')) {
+                    this.player.playerAnimation.play('damage')
+                    console.log("colided with obstacle")
+                    this.healthPoints -= 1;
+                    
             }
         }
 
