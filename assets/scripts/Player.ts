@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Animation, systemEvent, SystemEventType, EventTouch } from 'cc';
+import { _decorator, Component, Node, Animation, systemEvent, SystemEventType, EventTouch, Collider, ICollisionEvent, Collider2D, Contact2DType, PhysicsSystem2D, IPhysics2DContact } from 'cc';
 import { GameManager } from './GameManager';
 const { ccclass, property } = _decorator;
 
@@ -7,26 +7,38 @@ export class Player extends Component {
     @property(Node)
     public map: Node = null!; // Ссылка на карту, которую будем двигать
 
+    @property(Node)
+    public tutorialCollider: Node = null!;
+
+    @property(Node)
+    public finish: Node = null!;
+
+
     @property(Animation)
     public playerAnimation: Animation = null!; // Анимации персонажа
 
     @property(Number)
-    public moveSpeed: number = 100; // Скорость движения карты
+    public moveSpeed: number = 500; // Скорость движения карты
 
     @property(Number)
-    public jumpHeight: number = 250; // Высота прыжка
+    public jumpHeight: number = 500; // Высота прыжка
 
     @property(Number)
-    public jumpSpeed: number = 500; // Скорость подъема (чем выше, тем быстрее)
+    public jumpSpeed: number = 800; // Скорость подъема (чем выше, тем быстрее)
 
     @property(Number)
-    public fallSpeedMultiplier: number = 1.5; // Множитель для скорости падения (чтобы падение было быстрее)
+    public fallSpeedMultiplier: number = 0.0; // Множитель для скорости падения (чтобы падение было быстрее)
+
+    
 
     private isJumping: boolean = false; // Статус прыжка
     private isFalling: boolean = false; // Статус падения
     private jumpStartY: number = 0; // Начальная высота при прыжке
     private currentJumpTime: number = 0; // Время подъема для плавного движения
-    //private isMoving: boolean = false;
+    private isMoving: boolean = false;
+
+    
+
 
     @property(GameManager)
     public gameManager: GameManager = null;
@@ -37,26 +49,37 @@ export class Player extends Component {
         systemEvent.on(SystemEventType.TOUCH_START, this.onJump, this);
     }
 
+
     update(dt: number) {
         if (this.gameManager) {
-            console.log("gameManager найден: ", this.gameManager); // Для отладки
+           // console.log("gameManager найден: ", this.gameManager); // Для отладки
             if (this.gameManager.IsPaused == false) {
                 // Двигаем карту влево для создания иллюзии движения
                 this.map.setPosition(this.map.position.x - this.moveSpeed * dt, this.map.position.y, this.map.position.z);
+                this.finish.setPosition(this.finish.position.x - this.moveSpeed * dt, this.finish.position.y,);
+                this.tutorialCollider.setPosition(this.tutorialCollider.position.x - this.moveSpeed * dt, this.tutorialCollider.position.y,);
+                this.isMoving = true;
             }
+            else { this.isMoving = false; }
         }
         else {
             console.error("Компонент GameManager не прикреплен к узлу или IsPaused равно true");
         }
 
-        if (!this.isJumping) {
+        if (!this.isJumping && this.isMoving && !this.isAnimationPlaying('damage')) {
             // Если персонаж не в прыжке, включаем анимацию "run"
             if (!this.isAnimationPlaying('run')) {
                 this.playerAnimation.play('run');
             }
-        } else {
+        }
+        if (!this.isJumping && !this.isMoving) {
+            if (!this.isAnimationPlaying('idle')) {
+                this.playerAnimation.play('idle');
+            }
+        } 
+        if (this.isJumping) {
             // Если игрок в прыжке, меняем анимацию на "jump"
-            if (!this.isAnimationPlaying('jump')) {
+            if (!this.isAnimationPlaying('jump') && !this.isAnimationPlaying('damage')) {
                 this.playerAnimation.play('jump');
             }
 
@@ -81,14 +104,17 @@ export class Player extends Component {
                     this.isJumping = false;
                     this.isFalling = false;
                     // После приземления, включаем анимацию "run"
+                    if (!this.isAnimationPlaying('damage')) { 
                     this.playerAnimation.play('run');
+                }
                 }
             }
         }
+        
     }
 
     // Проверка, воспроизводится ли анимация
-    private isAnimationPlaying(name: string): boolean {
+    public isAnimationPlaying(name: string): boolean {
         const state = this.playerAnimation.getState(name);
         return state && state.isPlaying;
     }
@@ -102,4 +128,6 @@ export class Player extends Component {
             this.currentJumpTime = 0; // Сброс времени для плавного подъема
         }
     }
+
+    
 }

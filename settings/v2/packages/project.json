@@ -6,5 +6,38 @@
       "height": 1920,
       "fitHeight": true
     }
-  }
+  },
+  "physics": {
+    "collisionGroups": [
+      {
+        "index": 1,
+        "name": "player"
+      },
+      {
+        "index": 2,
+        "name": "tutorial"
+      },
+      {
+        "index": 3,
+        "name": "reward"
+      },
+      {
+        "index": 4,
+        "name": "fiinish"
+      },
+      {
+        "index": 5,
+        "name": "obstacle"
+      }
+    ],
+    "collisionMatrix": {
+      "0": 63,
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1
+    }
+  },
+  "custom_joint_texture_layouts": []
 }
